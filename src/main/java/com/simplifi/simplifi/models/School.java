@@ -1,13 +1,12 @@
 package com.simplifi.simplifi.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.CascadeType;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class School {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,13 +16,16 @@ public class School {
     private String address;
 
     @OneToMany(mappedBy = "school", cascade = CascadeType.ALL)
-    private java.util.List<Student> students;
+    private List<Student> students;
 
     @OneToMany(mappedBy = "school", cascade = CascadeType.ALL)
-    private java.util.List<Teacher> teachers;
+    private List<Teacher> teachers;
 
     @OneToMany(mappedBy = "school", cascade = CascadeType.ALL)
-    private java.util.List<Subject> subjects;
+    private List<Subject> subjects;
+
+    @OneToMany(mappedBy = "school", cascade = CascadeType.ALL)
+    private List<Classroom> classrooms;
 
     public Long getId() {
         return id;
@@ -49,28 +51,36 @@ public class School {
         this.address = address;
     }
 
-    public java.util.List<Student> getStudents() {
+    public List<Student> getStudents() {
         return students;
     }
 
-    public void setStudents(java.util.List<Student> students) {
+    public void setStudents(List<Student> students) {
         this.students = students;
     }
 
-    public java.util.List<Teacher> getTeachers() {
+    public List<Teacher> getTeachers() {
         return teachers;
     }
 
-    public void setTeachers(java.util.List<Teacher> teachers) {
+    public void setTeachers(List<Teacher> teachers) {
         this.teachers = teachers;
     }
 
-    public java.util.List<Subject> getSubjects() {
+    public List<Subject> getSubjects() {
         return subjects;
     }
 
-    public void setSubjects(java.util.List<Subject> subjects) {
+    public void setSubjects(List<Subject> subjects) {
         this.subjects = subjects;
+    }
+
+    public List<Classroom> getClassrooms() {
+        return classrooms;
+    }
+
+    public void setClassrooms(List<Classroom> classrooms) {
+        this.classrooms = classrooms;
     }
 
 }
