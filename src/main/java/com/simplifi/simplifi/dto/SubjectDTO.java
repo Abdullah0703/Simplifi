@@ -6,6 +6,7 @@ public class SubjectDTO {
     private Long schoolId;
     private String schoolName;
 
+    // Getters & Setters
     public Long getId() {
         return id;
     }
