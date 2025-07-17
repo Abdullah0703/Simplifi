@@ -1,4 +1,3 @@
-# Use Maven + JDK 21 from Eclipse Temurin (official + active support)
 FROM maven:3.9.6-eclipse-temurin-21 AS build
 
 WORKDIR /app
@@ -9,7 +8,6 @@ COPY pom.xml .
 COPY src ./src
 RUN mvn clean package -DskipTests
 
-# Use a lightweight runtime image with JDK 21 (Eclipse Temurin)
 FROM eclipse-temurin:21-jdk-jammy
 
 WORKDIR /app
