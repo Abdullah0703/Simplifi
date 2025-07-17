@@ -1,6 +1,6 @@
 # Simplifi Project
 
-This is a Java Spring Boot application designed to connect with a MySQL database.
+This is a Java Spring Boot application for SimplifiPay Assessment
 
 ## ✅ Prerequisites
 
